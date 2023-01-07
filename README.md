@@ -16,6 +16,11 @@ The aim is to set things up as manually as possible without creating "magic" via
 1. Create the db: `PGDATABASE=postgres node bin/create-db.mjs`
 1. Create the tables: `node bin/create-schema.mjs`
 1. Create seed data `node bin/create-seed-data.mjs`
+1. Now start the notifier with `docker run --rm -p 8084:8084 --name notifier -e PGPASSWORD=postgres -e CREATE_DB_NAME=notifier -e PGHOST=notifier-db-1 -e AMQPHOST=rabbitmq -e AMQPPORT=5672 -e PORT=8084 --network mm_2023 notifier:1`
+1. Go into the container to set up the db: `docker exec -it notifier /bin/bash`
+1. Create the db: `PGDATABASE=postgres node bin/create-db.mjs`
+1. Create the tables: `node bin/create-schema.mjs`
+1. Create seed data `node bin/create-seed-data.mjs`
 
 This depends on a shared bridge network called `mm_2023` and we're reusing the dev 
 
