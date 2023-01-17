@@ -16,7 +16,7 @@ Starting up the entire system including the applications is not part of the role
 
 We provide two methods to set things up:
 
-1. [Manual Setup](https://github.com/microservices-march/platform/blob/main/docs/manual-setup.md): Follow this guide. if you want to manually go through most steps. Recommended for learning.
+1. [Manual Setup](https://github.com/microservices-march/platform/blob/main/docs/manual-setup.md): Follow this guide if you want to manually go through most steps. Recommended for learning.
 2. [Quick Setup](https://github.com/microservices-march/platform/blob/main/docs/quick-setup.md): Follow this guide if you want to get started quickly. Automates mosts steps covered in the Manual Setup guide.
 
 ## Components
