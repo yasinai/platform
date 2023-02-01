@@ -38,11 +38,11 @@ The name of the parent directory can be whatever you'd like.
 The following command will start all the services and shared infrastructure:
 
 ```bash
-docker-compose -f docker-compose.full-demo.yml up --abort-on-container-exit -d
+docker-compose -f docker-compose.full-demo.yml up --abort-on-container-exit
 ```
 
 > **Note:**
-> See that we set `--abort-on-container-exit`. This is because we need all services to be up and running, but docker-compose will happily start up just the services it can if you do not pass this flag. This can lead to confusing failures.
+> See that we set `--abort-on-container-exit`. This is because we need all services to be up and running, but docker-compose will happily start up just the services it can if you do not pass this flag. This can lead to confusing failures. By default, this will also make Docker output your container logs to your terminal, so you will have to open a new terminal window/tab to follow the rest of this guide.
 
 At this point, all the services, their databases, and the shared infrastructure is up and running. However, we need to set up the database schemas and sample data for the services.
 
