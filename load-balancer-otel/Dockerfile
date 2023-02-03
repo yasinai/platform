@@ -23,8 +23,12 @@ RUN apt-get update \
   && /opt/opentelemetry-webserver-sdk/install.sh \
   && echo "load_module /opt/opentelemetry-webserver-sdk/WebServerModule/Nginx/1.23.1/ngx_http_opentelemetry_module.so;\n$(cat /etc/nginx/nginx.conf)" > /etc/nginx/nginx.conf
 
-COPY consul-template-config.hcl .
+COPY consul-template-config.hcl ./consul-template-config.hcl
 COPY nginx.ctmpl /usr/templates/nginx.ctmpl
-COPY opentelemetry_module.conf /etc/nginx/conf.d
+COPY opentelemetry_module.conf /etc/nginx/conf.d/opentelemetry_module.conf
+
+EXPOSE 80
+
+STOPSIGNAL SIGQUIT
 
 CMD ["dumb-init", "consul-template", "-config=consul-template-config.hcl"]

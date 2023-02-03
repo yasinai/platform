@@ -16,7 +16,11 @@ RUN apt-get update \
   && unzip /tmp/consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip -d /usr/local/bin \
   && rm -rf /tmp/consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip
 
-COPY consul-template-config.hcl .
+COPY consul-template-config.hcl ./consul-template-config.hcl
 COPY nginx.ctmpl /usr/templates/nginx.ctmpl
+
+EXPOSE 80
+
+STOPSIGNAL SIGQUIT
 
 CMD ["dumb-init", "consul-template", "-config=consul-template-config.hcl"]

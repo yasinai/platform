@@ -9,7 +9,7 @@ consul {
 }
 template {
   source      = "/usr/templates/nginx.ctmpl"
-  destination = "/etc/nginx/nginx.conf"
+  destination = "/etc/nginx/conf.d/default.conf"
   perms       = 0600
   command     = "if [ -e /var/run/nginx.pid ]; then nginx -s reload; else nginx; fi"
 }
