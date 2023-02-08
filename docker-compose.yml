@@ -42,6 +42,30 @@ services:
     networks:
       - mm_2023
 
+  # collector:
+  #   image: otel/opentelemetry-collector:latest
+  #   container_name: collector
+  #   depends_on:
+  #     - jaeger
+  #   command: ["--config=/etc/otel-collector-config.yaml"]
+  #   volumes:
+  #     - ./otel_collector/otel-collector-config.yaml:/etc/otel-collector-config.yaml
+  #   networks:
+  #     - mm_2023
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.41
+    container_name: jaeger_1
+    ports:
+      - "16686:16686"
+      - "4317:4317"
+      - "4318:4318"
+    environment:
+      COLLECTOR_OTLP_ENABLED: true
+    networks:
+      - mm_2023
+
+
 volumes:
   rabbit-data:
   rabbit-log:
