@@ -19,7 +19,7 @@ services:
     container_name: consul-server
     restart: always
     volumes:
-     - ./consul/server.json:/consul/config/server.json:ro
+      - ./consul/server.json:/consul/config/server.json:ro
     networks:
       - mm_2023
     ports:
@@ -27,17 +27,16 @@ services:
       - "8600:8600/tcp"
       - "8600:8600/udp"
     command: "agent"
-
+  
   consul-client:
     image: hashicorp/consul:1.14.4
     container_name: consul-client
     restart: always
     volumes:
-     - ./consul/client.json:/consul/config/client.json:ro
+      - ./consul/client.json:/consul/config/client.json:ro
     networks:
       - mm_2023
     command: "agent"
-
 
 volumes:
   rabbit-data:
