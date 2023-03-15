@@ -41,8 +41,8 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: Get new container name
         run: |
-          # Enable extension installation
-          az config set extension.use_dynamic_install=yes_without_prompt
+          # Install the containerapp extension for the Azure CLI
+          az extension add --name containerapp --upgrade
           # Get the last deployed revision name
           REVISION_NAME=`az containerapp revision list -n ${{ secrets.CONTAINER_APP_NAME }} -g ${{ secrets.RESOURCE_GROUP }} --query "[].name" -o tsv | tail -1`
           # Get the last deployed revision's fqdn
