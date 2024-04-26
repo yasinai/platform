@@ -1,4 +1,4 @@
-FROM nginx:1.23
+FROM nginx:1.25.5
 
 ENV NGINX_UPSTREAM=localhost
 
